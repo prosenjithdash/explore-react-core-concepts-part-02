@@ -1,33 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Counter from './Counter'
 
+
+// Main Components
 function App() {
-  const [count, setCount] = useState(0)
 
+  // 39-2 Different Way To Handle Events In React
+
+  // way 01
+  function handleClick() {
+    alert("Successful Click 01.")
+  }
+
+  // way 02
+  const handleClick2 = () => {
+    alert("Successful Click 02.")
+  }
+
+  // way 04
+  const handleClickProps = (num) => {
+    alert(num + 10);
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+      <h1>React Core Concepts Part: 02</h1>
+
+      {/* 39-3 A Simple Introduction To State Change In React */}
+      <Counter></Counter>
+
+      {/* Normal JavaScript */}
+      {/* <button onclick='handleClick()'>Click Me</button> */}
+
+      <button onClick={handleClick}>Click Me</button>
+      <button onClick={handleClick2}>Click 02</button>
+      <button onClick={() => { alert("Successful Click 03.") }}>Click 03</button>
+
+      {/* handleClickProps(7) ->>> ( if we white this type then call direct call function so it's not to work properly that why need to use array function (rap)) */}
+      <button onClick={() => handleClickProps(7)}>Click 4 with props</button>
+
+      
     </>
   )
 }
